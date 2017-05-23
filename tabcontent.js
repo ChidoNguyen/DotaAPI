@@ -165,8 +165,8 @@ function getHistKillsQ(){
   		data = JSON.parse(req.responseText); // convert to JSON object format
       //clear inner html + create new table element for our div histtab
       var table2 = document.createElement('table');
-      document.getElementById('histtab').innerHTML=" ";
-      document.getElementById('histtab').appendChild(table2);
+      document.getElementById('newHist').innerHTML=" ";
+      document.getElementById('newHist').appendChild(table2);
             // create the two header for # of Kills and # of Game Occurences
 
 
