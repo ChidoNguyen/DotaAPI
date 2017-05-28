@@ -15,6 +15,7 @@
 		<button class = "navbar" onclick="openTab(event, 'second')">Parameters Query</button>
 	
 		<button class = "navbar" onclick="openTab(event, 'second_imp')">API Requests with Queries</button>
+		<button class = "navbar" onclick="openTab(event, 'finals')">Final Food For Thought</button>
 	</div>
 		
 		
@@ -133,7 +134,7 @@
 		<h3> Including Queries </h3>
 		<p> Our target function this time is : GET /players/{account_id}/histograms/{fields}. The histogram function will return histogram data, and if you've forgotten we can chart histogram data with # of occurence for "an action/data/event".<br><br><br>
 		
-		Lets break down this function : GET /players/{account_id}/histograms/{fields}. We already have our steam ID to substitue into account_id, but what is this {fields} area. It turns out fields refers to match related stats such as kills, deaths, assists, gpm (gold per min) and more. Finding out which stats populate in the histogram function is based on trial and error as there  is no definitive documentation on it. This time around I am not going to create a form for implementation, but directly show the javascript coding and what data is sent and received. On top of the function url we can add on the query portion "?querykey=queryvalue". For our example I will look at the field for kills the user got, and then look at the same field but query it and limit it to search only in games from X previous days. Take a look at my JSFiddle below, feel free to mess around with it.<br>
+		Lets break down this function : GET /players/{account_id}/histograms/{fields}. We already have our steam ID to substitute into account_id, but what is this {fields} area. It turns out fields refers to match related stats such as kills, deaths, assists, gpm (gold per min) and more. Finding out which stats populate in the histogram function is based on trial and error as there  is no definitive documentation on it. This time around I am not going to create a form for implementation, but directly show the javascript coding and what data is sent and received. On top of the function url we can add on the query portion "?querykey=queryvalue". For our example I will look at the field for kills the user got, and then look at the same field but query it and limit it to search only in games from X previous days. Take a look at my JSFiddle below, feel free to mess around with it.<br>
 		<h4>Sample Response for kill histogram data returned</h4>
 			<blockquote><img src="./Pictures/gpmex.png"></img></blockquote>
 		X stands for our variable in this case it is the Kills we got.<br>
@@ -152,7 +153,7 @@
 	
 		
 		
-	<div id ='histquery'>
+	<span id ='histquery'>
 	<h3>Lets add a query</h3>
 	<p>Using the same GET function with the histogram. We will now send a GET request with a query for the # of kills that has happened in the last 10 days. If we were using a form we could add an if/else conditional statement to detect whether or not queries were requested. This would allow us to re-use the same function that is executed when we hit submit. We would change the composition of the final URL that is sent to the API server. But in our case I will create another function with a minor change. Check out the  fiddle below hit submit and see the new data to compare.</p>
 	
@@ -160,10 +161,33 @@
 	
 	<iframe width="100%" height="300" src="https://jsfiddle.net/kisz/o6fz8eyh/embedded/js,html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 	<input type = "submit" id="histq"></input>
-	<div id="newHist"></div>
+	<span id="newHist"></span>
 	<p id="exp2"></p>
+	</span>
 	</div>
 	</div>
+	
+	<div id="finals" class = "navbar_content">
+	
+	<h3>Final Product</h3>
+	<p>We scrapped 1 API call function and extracted 2 data objects from a ton of stuff. The end product is to parse the data out into its separate components and then add a lot of styling. I am not as creative with styles and formatting, thankfully Open Dota's webpage makes use of their API very nicely. Take a look at the page below, ultimately Open Dota parses out all the histogram + field data. We can click on kills or assist and it'll change to show the stats for each field. Similar to my table before but 100000% more pretty and presentable.
+	
+	<iframe width="100%" height= "500" src="https://www.opendota.com/players/86734297/histograms" frameborder="0"></iframe>
+	<br>
+	<h4>Credits</h4>
+	<ul>
+
+	<li>https://www.opendota.com/
+	<li>https://docs.opendota.com/
+	<li>http://dota2.gamepedia.com/Dota_2_Wiki
+	<li>http://blog.dota2.com/?l=english
+	<li>https://www.w3schools.com/
+	<li>https://steamrep.com/
+	<li>https://jsfiddle.net/
+	</ul>
+	</p>
+
+	
 	</div>
 		<script src="tabcontent.js"></script>
  </body>
